@@ -1,0 +1,7 @@
+<div>
+  <label>Restaurant Brand:</label>
+  <select (change)="onBrandChange($event)">
+    <option value="">Select Brand</option>
+    <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+  </select>
+</div>

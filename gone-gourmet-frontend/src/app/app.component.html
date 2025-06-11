@@ -1,0 +1,3 @@
+<app-brand-selection (selectedBrand)="selectedBrand = $event"></app-brand-selection>
+<app-city-selection [selectedBrand]="selectedBrand" (selectedCity)="selectedCity = $event"></app-city-selection>
+<app-unavailable-items [selectedBrand]="selectedBrand" [selectedCity]="selectedCity"></app-unavailable-items>
