@@ -1,6 +1,6 @@
 <div>
   <button (click)="onSubmit()">Submit</button>
-  <input type="text" placeholder="Search unavailable items" (input)="onSearch($event.target.value)">
+  <input type="text" placeholder="Search unavailable items" (input)="onSearch($event)">
   <div *ngFor="let item of filteredItems">
     <h3>{{ item.name }}</h3>
     <p>{{ item.reason }}</p>

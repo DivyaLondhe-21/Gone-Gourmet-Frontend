@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ApiService } from '../api.service';
 import { NgFor } from '@angular/common';
 
@@ -11,8 +11,7 @@ import { NgFor } from '@angular/common';
   })
   export class BrandSelectionComponent implements OnInit {
     brands: string[] = [];
-    selectedBrand: string = '';
-
+    @Output() selectedBrand = new EventEmitter<string>();
     constructor(private apiService: ApiService) { }
 
     ngOnInit(): void {
@@ -21,8 +20,9 @@ import { NgFor } from '@angular/common';
       });
     }
 
-    onBrandChange(brand: string): void {
-      this.selectedBrand = brand;
+    onBrandChange(event: Event): void {
+      const value = (event.target as HTMLSelectElement).value;
+      this.selectedBrand.emit(value);
     }
 
 }

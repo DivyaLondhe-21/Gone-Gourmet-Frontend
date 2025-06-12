@@ -1,6 +1,6 @@
 <div>
   <label>City:</label>
-  <select (change)="onCityChange($event.target.value)">
+  <select (change)="onCityChange($event)">
     <option value="">Select City</option>
     <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
   </select>

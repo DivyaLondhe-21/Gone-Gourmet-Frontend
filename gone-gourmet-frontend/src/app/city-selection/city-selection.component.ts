@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter,Input } from '@angular/core';
 import { ApiService } from '../api.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-city-selection',
+  imports: [CommonModule],
   templateUrl: './city-selection.component.html',
   styleUrls: ['./city-selection.component.css'],
   standalone: true
@@ -10,7 +12,7 @@ import { ApiService } from '../api.service';
 export class CitySelectionComponent implements OnInit {
   @Input() selectedBrand: string = '';
   cities: string[] = [];
-  selectedCity: string = '';
+  @Output() selectedCity = new EventEmitter<string>();
 
   constructor(private apiService: ApiService) { }
 
@@ -20,7 +22,9 @@ export class CitySelectionComponent implements OnInit {
     });
   }
 
-  onCityChange(city: string): void {
-    this.selectedCity = city;
+  onCityChange(event: Event): void {
+    const value = (event.target as HTMLSelectElement).value;
+    this.selectedCity.emit(value);
   }
+  
 }
